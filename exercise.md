@@ -13,8 +13,19 @@ digraph {
     rankdir = "LR";
     node [shape=box];
 
-    "     コンピュータリテラシー    " -> "   プログラミングI  ";
+       "情報工学概論" -> "計算機工学";
+    "計算機工学" -> "論理回路";
+    "情報工学概論" -> "プログラミング基礎I";
+
+    "基礎ゼミ" -> "プログラミング基礎I";
+    "プログラミング基礎I" -> "プログラミング基礎II"
+    "プログラミングⅠ" -> "プログラミングⅡ";
+
+    "コンピュータリテラシー" -> "プログラミングⅠ";
 }
+
+
+
 ```
 
 ## 課題 3.2 WBS
@@ -27,6 +38,24 @@ digraph {
 @startwbs ex02
 * 拓殖大学
 ** 商学部
+*** 経営学科
+*** 国際ビジネス学科
+*** 会計学科
+** 政済学部
+*** 法律政治学科
+*** 経済学科
+** 外国語学部
+*** 英米語学科
+*** 中国語学科
+*** スペイン語学科
+*** 国際日本語学科
+** 工学部
+*** 機械システム工学科
+*** 電子システム学科
+*** 情報工学科
+*** デザイン学科
+** 国際学部
+*** 国際学科
 @endwbs
 ```
 
@@ -37,13 +66,40 @@ digraph {
 プレビュー結果が上の図のようになるように，下記の記述を完成させよ．ただし，別名については適当に設定してよい．(色や影などの違いは気にしなくてよい)
 
 ```plantUML
-@startuml ex03
+@startuml usecase01
 left to right direction
-actor 学生 as student
-rectangle {
-    usecase "課題の受領" as uc2
+actor "学生" as Student
+actor "教員" as Teacher
+
+'　システム領域の枠
+rectangle 　{
+
+    usecase "提出結果の採点" as UC8
+    usecase "リモートリポジトにpush" as UC7
+    usecase "修正のコミット" as UC6
+    usecase "修正をステージに上げる" as UC5
+    usecase "課題ファイルの修正" as UC4
+    usecase "リポジトリのクローン" as UC3
+    usecase "課題の受領" as UC2
+    usecase "課題の登録" as UC1
+
+
 }
-student --> uc2
+UC8 <-- Teacher
+UC1 <-- Teacher
+
+Student --> UC2
+Student --> UC3
+Student --> UC4
+Student --> UC5
+Student --> UC6
+Student --> UC7
+
+
+ 
+
+
+
 @enduml
 ```
 
@@ -53,12 +109,19 @@ student --> uc2
 独自の図解を作成せよ．対象は自由に決めてよいが，
 誰かのコピーにならないように留意せよ．
 
-```
+```plantUML
+@startwbs ex04
+* カフェ来店フロー
+** 入店
+** 注文
+** 食事
+** 会計退店
+@endwbs
 ```
 
 
 ## チェック
-- [ ] 課題 3.1 有向グラフ
-- [ ] 課題 3.2 WBS
-- [ ] 課題 3.3 ユースケース図
-- [ ] 課題 3.4 オリジナルの図解
+- [x] 課題 3.1 有向グラフ
+- [x] 課題 3.2 WBS
+- [x] 課題 3.3 ユースケース図
+- [x] 課題 3.4 オリジナルの図解
